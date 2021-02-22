@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <VersionPrefix>3.2.2</VersionPrefix>
+    <VersionSuffix>dev.1</VersionSuffix>
+    <Authors>Sim Tsai</Authors>
+    <AssemblyName></AssemblyName>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    <Description>智运开放平台 dotnet SDK</Description>
+    <PackageTags>sinoiov 中交兴路 智运开放平台</PackageTags>
+    <Product>智运开放平台 dotnet SDK</Product>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+</Project>

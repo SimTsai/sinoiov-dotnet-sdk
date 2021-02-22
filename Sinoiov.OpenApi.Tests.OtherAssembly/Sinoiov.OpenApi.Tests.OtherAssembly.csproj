@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;net461;</TargetFrameworks>
+    <LangVersion>9.0</LangVersion>
+    <IsPackable>false</IsPackable>
+    <UserSecretsId>53ad35e4-4270-4d5c-aa7a-2c3de11607bf</UserSecretsId>
+    <RootNamespace>Sinoiov.OpenApi.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Sinoiov.OpenApi\Shim\IsExternalInit.cs" Link="IsExternalInit.cs" />
+  </ItemGroup>
+</Project>

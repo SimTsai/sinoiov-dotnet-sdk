@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+﻿using System;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Options;
 using Sinoiov.OpenApi.Enums;
 using Sinoiov.OpenApi.Interfaces;
 using Sinoiov.OpenApi.Options;
-using System;
 
 namespace Sinoiov.OpenApi.Implements
 {

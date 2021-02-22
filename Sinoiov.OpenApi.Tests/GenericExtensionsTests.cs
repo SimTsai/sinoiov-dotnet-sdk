@@ -1,5 +1,5 @@
-﻿using Sinoiov.OpenApi.Extensions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Sinoiov.OpenApi.Extensions;
 using Xunit;
 
 namespace Sinoiov.OpenApi.Tests

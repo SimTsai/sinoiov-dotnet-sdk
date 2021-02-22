@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sinoiov.OpenApi.Implements;
 using Sinoiov.OpenApi.Interfaces;
 using Sinoiov.OpenApi.Options;
-using System;
 
 namespace Sinoiov.OpenApi.Extensions.DependencyInjection
 {

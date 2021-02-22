@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System;
+using System.Net.Http;
+using Microsoft.Extensions.Options;
 using Sinoiov.OpenApi.ConfigurationSection;
 using Sinoiov.OpenApi.Interfaces;
 using Sinoiov.OpenApi.Options;
-using System;
-using System.Net.Http;
 
 namespace Sinoiov.OpenApi.Implements
 {

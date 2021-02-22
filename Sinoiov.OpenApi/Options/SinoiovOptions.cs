@@ -1,8 +1,31 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Sinoiov.OpenApi.Enums;
+/* 项目“Sinoiov.OpenApi (netstandard2.0)”的未合并的更改
+在此之前:
 using Sinoiov.OpenApi.Implements;
 using System.Collections.Generic;
+在此之后:
+using Sinoiov.OpenApi.Implements;
+*/
+
+/* 项目“Sinoiov.OpenApi (netstandard2.1)”的未合并的更改
+在此之前:
+using Sinoiov.OpenApi.Implements;
+using System.Collections.Generic;
+在此之后:
+using Sinoiov.OpenApi.Implements;
+*/
+
+/* 项目“Sinoiov.OpenApi (net461)”的未合并的更改
+在此之前:
+using Sinoiov.OpenApi.Implements;
+using System.Collections.Generic;
+在此之后:
+using Sinoiov.OpenApi.Implements;
+*/
+
 
 namespace Sinoiov.OpenApi.Options
 {

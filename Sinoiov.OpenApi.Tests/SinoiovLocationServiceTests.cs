@@ -1,8 +1,8 @@
 ﻿#if NETFRAMEWORK
-using Sinoiov.OpenApi.Implements;
-using Sinoiov.OpenApi.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sinoiov.OpenApi.Implements;
+using Sinoiov.OpenApi.Interfaces;
 using Xunit;
 
 namespace Sinoiov.OpenApi.Tests

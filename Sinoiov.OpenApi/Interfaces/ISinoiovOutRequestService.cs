@@ -1,7 +1,7 @@
-﻿using Sinoiov.OpenApi.Models;
-using Sinoiov.OpenApi.Models.Auth;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Sinoiov.OpenApi.Models;
+using Sinoiov.OpenApi.Models.Auth;
 
 namespace Sinoiov.OpenApi.Interfaces
 {

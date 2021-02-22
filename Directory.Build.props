@@ -2,7 +2,7 @@
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
     <VersionPrefix>3.2.2</VersionPrefix>
-    <VersionSuffix>dev.1</VersionSuffix>
+    <VersionSuffix>dev.2</VersionSuffix>
     <Authors>Sim Tsai</Authors>
     <AssemblyName></AssemblyName>
     <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>

@@ -5,6 +5,7 @@ namespace Sinoiov.OpenApi.Models
     /// <summary>
     /// 车牌信息
     /// </summary>
+    [System.Diagnostics.DebuggerDisplay("{VehicleNO}_{VehicleColor}")]
     public partial class SinoiovVehicle
     {
         /// <summary>

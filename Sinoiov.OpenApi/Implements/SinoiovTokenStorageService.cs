@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 using Sinoiov.OpenApi.Interfaces;
 using Sinoiov.OpenApi.Options;
-using System;
-using System.Threading.Tasks;
 
 namespace Sinoiov.OpenApi.Implements
 {

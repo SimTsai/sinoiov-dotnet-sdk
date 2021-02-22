@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sinoiov.OpenApi.Extensions.DependencyInjection;
 using Sinoiov.OpenApi.Options;
-using System;
 
 namespace Sinoiov.OpenApi.Tests.TestBase
 {

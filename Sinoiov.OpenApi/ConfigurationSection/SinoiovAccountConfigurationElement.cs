@@ -1,5 +1,5 @@
-﻿using Sinoiov.OpenApi.Options;
-using System.Configuration;
+﻿using System.Configuration;
+using Sinoiov.OpenApi.Options;
 
 namespace Sinoiov.OpenApi.ConfigurationSection
 {

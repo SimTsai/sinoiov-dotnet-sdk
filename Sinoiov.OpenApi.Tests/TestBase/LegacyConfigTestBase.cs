@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System.Configuration;
+using Microsoft.Extensions.Options;
 using Sinoiov.OpenApi.ConfigurationSection;
 using Sinoiov.OpenApi.Options;
-using System.Configuration;
 
 namespace Sinoiov.OpenApi.Tests.TestBase
 {

@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Sinoiov.OpenApi.Interfaces;
-using System;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Sinoiov.OpenApi.Tests

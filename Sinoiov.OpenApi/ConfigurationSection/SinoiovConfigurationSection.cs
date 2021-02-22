@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System;
+using System.Configuration;
+using Microsoft.Extensions.Options;
 using Sinoiov.OpenApi.Enums;
 using Sinoiov.OpenApi.Options;
-using System;
-using System.Configuration;
 
 namespace Sinoiov.OpenApi.ConfigurationSection
 {

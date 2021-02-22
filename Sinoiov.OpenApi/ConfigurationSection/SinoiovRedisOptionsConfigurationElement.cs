@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Caching.StackExchangeRedis;
+﻿using System.Configuration;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using StackExchange.Redis;
-using System.Configuration;
 
 namespace Sinoiov.OpenApi.ConfigurationSection
 {

@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Sinoiov.OpenApi.Extensions;
 using Sinoiov.OpenApi.Interfaces;
 using Sinoiov.OpenApi.Models;
 using Sinoiov.OpenApi.Models.Auth;
 using Sinoiov.OpenApi.Options;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Sinoiov.OpenApi.Implements
 {

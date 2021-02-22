@@ -1,8 +1,8 @@
 ﻿#if NETFRAMEWORK
-using Microsoft.Extensions.Caching.Distributed;
-using Sinoiov.OpenApi.Implements;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Distributed;
+using Sinoiov.OpenApi.Implements;
 using Xunit;
 
 namespace Sinoiov.OpenApi.Tests

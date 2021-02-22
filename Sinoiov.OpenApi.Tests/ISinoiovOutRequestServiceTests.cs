@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Sinoiov.OpenApi.Interfaces;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Sinoiov.OpenApi.Tests

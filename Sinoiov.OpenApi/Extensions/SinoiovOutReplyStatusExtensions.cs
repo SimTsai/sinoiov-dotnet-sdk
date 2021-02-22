@@ -1,6 +1,6 @@
-﻿using Sinoiov.OpenApi.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Sinoiov.OpenApi.Enums;
 
 namespace Sinoiov.OpenApi.Extensions
 {

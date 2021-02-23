@@ -75,6 +75,7 @@ namespace Sinoiov.OpenApi.Implements
         public void Dispose()
         {
             sinoiovHttpClient?.Dispose();
+            sinoiovTokenStorageService?.Dispose();
         }
 
         private ISinoiovLocationService sinoiovLocationService;

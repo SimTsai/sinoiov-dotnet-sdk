@@ -21,6 +21,14 @@ namespace Sinoiov.OpenApi.Implements
             this.sinoiovOptions = sinoiovOptions?.Value;
         }
 
+        public void Dispose()
+        {
+            if (distributedCache is not null && distributedCache is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+        }
+
         async public Task<string> LoadTokenAsync()
         {
             var token = await distributedCache

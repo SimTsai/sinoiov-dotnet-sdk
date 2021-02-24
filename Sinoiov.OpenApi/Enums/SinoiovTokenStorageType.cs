@@ -1,4 +1,6 @@
-﻿namespace Sinoiov.OpenApi.Enums
+﻿using System.ComponentModel;
+
+namespace Sinoiov.OpenApi.Enums
 {
     /// <summary>
     /// 中交兴路Token存储位置
@@ -8,10 +10,10 @@
         /// <summary>
         /// 进程内
         /// </summary>
-        InMemory,
+        [Description("进程内")] InMemory,
         /// <summary>
         /// Redis
         /// </summary>
-        Redis
+        [Description("Redis")] Redis
     }
 }

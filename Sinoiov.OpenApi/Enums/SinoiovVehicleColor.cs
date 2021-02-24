@@ -1,4 +1,6 @@
-﻿namespace Sinoiov.OpenApi.Enums
+﻿using System.ComponentModel;
+
+namespace Sinoiov.OpenApi.Enums
 {
     /// <summary>
     /// 车牌颜色
@@ -8,10 +10,10 @@
         /// <summary>
         /// 蓝色
         /// </summary>
-        Blue = 1,
+        [Description("蓝色")] Blue = 1,
         /// <summary>
         /// 黄色
         /// </summary>
-        Yellow = 2
+        [Description("黄色")] Yellow = 2
     }
 }

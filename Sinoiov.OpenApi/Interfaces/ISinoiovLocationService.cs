@@ -1,41 +1,11 @@
-﻿
-/* 项目“Sinoiov.OpenApi (netstandard2.0)”的未合并的更改
-在此之前:
-using Sinoiov.OpenApi.Models.Location;
-using System;
-using System.Threading.Tasks;
-在此之后:
-using System;
-using System.Threading.Tasks;
-using Sinoiov.OpenApi.Threading.Tasks;
-*/
-
-/* 项目“Sinoiov.OpenApi (netstandard2.1)”的未合并的更改
-在此之前:
-using Sinoiov.OpenApi.Models.Location;
-using System;
-using System.Threading.Tasks;
-在此之后:
-using System;
-using System.Threading.Tasks;
-using Sinoiov.OpenApi.Threading.Tasks;
-*/
-
-/* 项目“Sinoiov.OpenApi (net461)”的未合并的更改
-在此之前:
-using Sinoiov.OpenApi.Models.Location;
-using System;
-using System.Threading.Tasks;
-在此之后:
-using System;
-using System.Threading.Tasks;
-using Sinoiov.OpenApi.Threading.Tasks;
-*/
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Sinoiov.OpenApi.Models.Location;
 
 namespace Sinoiov.OpenApi.Interfaces
 {
+    /// <summary>
+    /// 位置信息类接口
+    /// </summary>
     public interface ISinoiovLocationService
     {
         /// <summary>

@@ -5,10 +5,20 @@ using System.Linq.Expressions;
 
 namespace Sinoiov.OpenApi.Extensions
 {
+    /// <summary>
+    /// 泛型扩展
+    /// </summary>
     public static class GenericExtensions
     {
         private static Dictionary<Type, Dictionary<string, Delegate>> ToDictionaryCache = new Dictionary<Type, Dictionary<string, Delegate>>();
 
+        /// <summary>
+        /// 转换为字典
+        /// </summary>
+        /// <typeparam name="TObject"></typeparam>
+        /// <param name="object"></param>
+        /// <param name="includeNonPublic">包含非公有属性</param>
+        /// <returns></returns>
         public static Dictionary<string, object> ToDictionary<TObject>(this TObject @object, bool includeNonPublic = false)
         {
             Dictionary<string, object> result = new Dictionary<string, object>();
@@ -58,6 +68,13 @@ namespace Sinoiov.OpenApi.Extensions
             return result;
         }
 
+        /// <summary>
+        /// 转换为字符串字典
+        /// </summary>
+        /// <typeparam name="TObject"></typeparam>
+        /// <param name="object"></param>
+        /// <param name="includeNonPublic">包含非公有属性</param>
+        /// <returns></returns>
         public static Dictionary<string, string> ToStringDictionary<TObject>(this TObject @object, bool includeNonPublic = false)
         {
             var dict = @object.ToDictionary<TObject>(includeNonPublic);

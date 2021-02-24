@@ -27,8 +27,16 @@ namespace Sinoiov.OpenApi.Implements
         public HttpClient CreateClient(string name) => new HttpClient(HttpMessageHandler.Value, false);
     }
 
+    /// <summary>
+    /// 中交兴路服务工厂
+    /// </summary>
     public static class SinoiovServiceFactory
     {
+        /// <summary>
+        /// 创建中交兴路服务
+        /// </summary>
+        /// <param name="sectionName">配置节名称</param>
+        /// <returns></returns>
         public static ISinoiovService CreateSinoiovService(string sectionName = null)
         {
             sectionName ??= SinoiovConfigurationSection.DefaultConfigurationSectionName;
@@ -38,14 +46,25 @@ namespace Sinoiov.OpenApi.Implements
             return CreateSinoiovService(sinoiovOptions);
         }
 
+        /// <summary>
+        /// 创建中交兴路服务
+        /// </summary>
+        /// <param name="sinoiovOptions"></param>
+        /// <returns></returns>
         public static ISinoiovService CreateSinoiovService(IOptions<SinoiovOptions> sinoiovOptions)
         {
             return new SinoiovService(sinoiovOptions);
         }
     }
 
+    /// <summary>
+    /// 中交兴路服务接口
+    /// </summary>
     public interface ISinoiovService : IDisposable
     {
+        /// <summary>
+        /// 位置信息类接口
+        /// </summary>
         ISinoiovLocationService SinoiovLocationService { get; }
     }
 

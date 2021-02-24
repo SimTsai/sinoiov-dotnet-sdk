@@ -4,11 +4,19 @@ using StackExchange.Redis;
 
 namespace Sinoiov.OpenApi.ConfigurationSection
 {
+    /// <summary>
+    /// Redis Token存储相关配置元素
+    /// </summary>
     public partial class SinoiovRedisOptionsConfigurationElement : ConfigurationElement
     {
         private const string ConnectionStringPropertyName = "connectionString";
         private const string InstanceNamePropertyName = "instanceName";
 
+        /// <summary>
+        /// 因为配置元素属性不能以config开头所以此处将
+        /// Configuration 重命名为 ConnectionString
+        /// <seealso cref="RedisCacheOptions.Configuration"/>
+        /// </summary>
         [ConfigurationProperty(ConnectionStringPropertyName)]
         public virtual string ConnectionString
         {
@@ -22,6 +30,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// <seealso cref="RedisCacheOptions.InstanceName"/>
+        /// </summary>
         [ConfigurationProperty(InstanceNamePropertyName)]
         public virtual string InstanceName
         {
@@ -35,6 +46,10 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// 将配置节转换为对应Options
+        /// </summary>
+        /// <returns></returns>
         public virtual RedisCacheOptions ToOptions()
         {
             return new RedisCacheOptions
@@ -45,6 +60,10 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             };
         }
 
+        /// <summary>
+        /// 隐式转换为Options
+        /// </summary>
+        /// <param name="configurationElement"></param>
         public static implicit operator RedisCacheOptions(SinoiovRedisOptionsConfigurationElement configurationElement)
         {
             return configurationElement.ToOptions();

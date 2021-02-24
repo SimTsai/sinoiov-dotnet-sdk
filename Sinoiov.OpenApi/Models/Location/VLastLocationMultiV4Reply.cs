@@ -4,11 +4,20 @@ using Sinoiov.OpenApi.Enums;
 
 namespace Sinoiov.OpenApi.Models.Location
 {
+    /// <summary>
+    /// 多车最新位置响应
+    /// </summary>
     public record VLastLocationMultiV4Reply : SinoiovReplyBase
     {
+        /// <summary>
+        /// 多车最新位置
+        /// </summary>
         public Dictionary<SinoiovVehicle, VLastLocationMultiV4ReplyItem> LastLocations { get; init; }
     }
 
+    /// <summary>
+    /// 最新位置
+    /// </summary>
     public record VLastLocationMultiV4ReplyItem
     {
         /// <summary>

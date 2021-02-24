@@ -11,6 +11,9 @@ using Sinoiov.OpenApi.Models.Location;
 
 namespace Sinoiov.OpenApi.Implements
 {
+    /// <summary>
+    /// 中交兴路位置信息类接口服务
+    /// </summary>
     public class SinoiovLocationService : ISinoiovLocationService
     {
         private readonly ISinoiovOutRequestService sinoiovOutRequestService;
@@ -21,6 +24,10 @@ namespace Sinoiov.OpenApi.Implements
             new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 #endif
 
+        /// <summary>
+        /// DI CTOR
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public SinoiovLocationService(
             IServiceProvider serviceProvider
             ) : this(serviceProvider.GetRequiredService<ISinoiovOutRequestService>())
@@ -35,6 +42,11 @@ namespace Sinoiov.OpenApi.Implements
             this.sinoiovOutRequestService = sinoiovOutRequestService;
         }
 
+        /// <summary>
+        /// 多车最新位置查询
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         async public Task<VLastLocationMultiV4Reply> VLastLocationMultiV4Async(VLastLocationMultiV4Request request)
         {
             var vclNs = string.Join(",",

@@ -6,8 +6,14 @@ using Sinoiov.OpenApi.Options;
 
 namespace Sinoiov.OpenApi.ConfigurationSection
 {
+    /// <summary>
+    /// 中交兴路配置节
+    /// </summary>
     public partial class SinoiovConfigurationSection : System.Configuration.ConfigurationSection
     {
+        /// <summary>
+        /// 默认配置节名称
+        /// </summary>
         public const string DefaultConfigurationSectionName = "sinoiov";
 
         private const string EnvironmentPropertyName = "environment";
@@ -19,6 +25,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
         private const string RedisOptionsPropertyName = "redisOptions";
         private const string TokenKeyPropertyName = "tokenKey";
 
+        /// <summary>
+        /// 环境
+        /// </summary>
         [ConfigurationProperty(EnvironmentPropertyName, IsRequired = true)]
         public virtual SinoiovEnvironment Environment
         {
@@ -32,6 +41,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// 基地址
+        /// </summary>
         [ConfigurationProperty(BaseUriPropertyName)]
         public virtual string BaseUri
         {
@@ -61,6 +73,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// 账号信息
+        /// </summary>
         [ConfigurationProperty(AccountPropertyName, IsRequired = true)]
         public virtual SinoiovAccountConfigurationElement Account
         {
@@ -74,6 +89,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// Api列表
+        /// </summary>
         [ConfigurationProperty(ApisPropertyName)]
         public virtual KeyValueConfigurationCollection Apis
         {
@@ -87,6 +105,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// Token存储位置
+        /// </summary>
         [ConfigurationProperty(TokenStorageInPropertyName)]
         public virtual SinoiovTokenStorageType TokenStorageIn
         {
@@ -109,6 +130,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// 进程内Token存储相关配置
+        /// </summary>
         [ConfigurationProperty(InMemoryOptionsPropertyName)]
         public virtual SinoiovInMemoryOptionsConfigurationElement InMemoryOptions
         {
@@ -122,6 +146,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// Redis Token存储相关配置
+        /// </summary>
         [ConfigurationProperty(RedisOptionsPropertyName)]
         public virtual SinoiovRedisOptionsConfigurationElement RedisOptions
         {
@@ -135,6 +162,9 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// Token缓存名
+        /// </summary>
         [ConfigurationProperty(TokenKeyPropertyName)]
         public virtual string TokenKey
         {
@@ -148,6 +178,10 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             }
         }
 
+        /// <summary>
+        /// 将配置节转换为对应Options
+        /// </summary>
+        /// <returns></returns>
         public virtual SinoiovOptions ToOptions()
         {
             var options = new SinoiovOptions
@@ -200,16 +234,28 @@ namespace Sinoiov.OpenApi.ConfigurationSection
             return options;
         }
 
+        /// <summary>
+        /// 将配置节转换为对应OptionsWrapper
+        /// </summary>
+        /// <returns></returns>
         public virtual OptionsWrapper<SinoiovOptions> ToOptionsWrapper()
         {
             return new OptionsWrapper<SinoiovOptions>(ToOptions());
         }
 
+        /// <summary>
+        /// 隐式转换为Options
+        /// </summary>
+        /// <param name="configurationSection"></param>
         public static implicit operator SinoiovOptions(SinoiovConfigurationSection configurationSection)
         {
             return configurationSection.ToOptions();
         }
 
+        /// <summary>
+        /// 隐式转换为OptionsWrapper
+        /// </summary>
+        /// <param name="configurationSection"></param>
         public static implicit operator OptionsWrapper<SinoiovOptions>(SinoiovConfigurationSection configurationSection)
         {
             return configurationSection.ToOptionsWrapper();

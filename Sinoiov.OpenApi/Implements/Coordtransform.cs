@@ -106,6 +106,12 @@ public class Coordtransform
         }
     }
 
+    /// <summary>
+    /// 转换lat
+    /// </summary>
+    /// <param name="lng"></param>
+    /// <param name="lat"></param>
+    /// <returns></returns>
     public static double Transformlat(double lng, double lat)
     {
         double ret = -100.0 + 2.0 * lng + 3.0 * lat + 0.2 * lat * lat + 0.1 * lng * lat + 0.2 * Math.Sqrt(Math.Abs(lng));
@@ -116,6 +122,12 @@ public class Coordtransform
         return ret;
     }
 
+    /// <summary>
+    /// 转换lng
+    /// </summary>
+    /// <param name="lng"></param>
+    /// <param name="lat"></param>
+    /// <returns></returns>
     public static double Transformlng(double lng, double lat)
     {
         double ret = 300.0 + lng + 2.0 * lat + 0.1 * lng * lng + 0.1 * lng * lat + 0.1 * Math.Sqrt(Math.Abs(lng));

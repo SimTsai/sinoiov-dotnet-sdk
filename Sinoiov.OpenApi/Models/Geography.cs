@@ -2,9 +2,17 @@
 
 namespace Sinoiov.OpenApi.Models
 {
+    /// <summary>
+    /// 地理坐标
+    /// </summary>
     [System.Diagnostics.DebuggerDisplay("{CoordinateSystem}(Longitude={Longitude},Latitude={Latitude})")]
     public class Geography
     {
+        /// <summary>
+        /// CTOR
+        /// </summary>
+        /// <param name="coord"></param>
+        /// <param name="coordinateSystem"></param>
         public Geography(
             (double lon,
             double lat) coord,
@@ -14,6 +22,12 @@ namespace Sinoiov.OpenApi.Models
 
         }
 
+        /// <summary>
+        /// CTOR
+        /// </summary>
+        /// <param name="lon"></param>
+        /// <param name="lat"></param>
+        /// <param name="coordinateSystem"></param>
         public Geography(
             double lon,
             double lat,
@@ -39,6 +53,10 @@ namespace Sinoiov.OpenApi.Models
         /// </summary>
         public GeographyCoordinateSystem CoordinateSystem { get; set; }
 
+        /// <summary>
+        /// 转换成 WGS-84（地球坐标） 坐标系
+        /// </summary>
+        /// <returns></returns>
         public Geography ToWGS84()
         {
             return this.CoordinateSystem switch
@@ -50,6 +68,10 @@ namespace Sinoiov.OpenApi.Models
             };
         }
 
+        /// <summary>
+        /// 转换成 GCT-02（火星坐标） 坐标系
+        /// </summary>
+        /// <returns></returns>
         public Geography ToGCJ02()
         {
             return this.CoordinateSystem switch
@@ -61,6 +83,10 @@ namespace Sinoiov.OpenApi.Models
             };
         }
 
+        /// <summary>
+        /// 转换为 BD09（百度坐标） 坐标系
+        /// </summary>
+        /// <returns></returns>
         public Geography ToBD09()
         {
             return this.CoordinateSystem switch
@@ -73,6 +99,9 @@ namespace Sinoiov.OpenApi.Models
         }
     }
 
+    /// <summary>
+    /// 坐标系
+    /// </summary>
     public enum GeographyCoordinateSystem
     {
         /// <summary>

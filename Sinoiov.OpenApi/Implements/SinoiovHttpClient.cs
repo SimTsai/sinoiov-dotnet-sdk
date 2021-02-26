@@ -26,6 +26,8 @@ namespace Sinoiov.OpenApi.Implements
             )
         {
             this.httpClient = httpClientFactory.CreateClient();
+            this.httpClient.DefaultRequestHeaders.TryAddWithoutValidation("sdk", "sinoiov-dotnet-sdk");
+            this.httpClient.DefaultRequestHeaders.TryAddWithoutValidation("sdkver", typeof(SinoiovHttpClient).Assembly.GetName().Version.ToString(3));
             this.httpClient.BaseAddress = new Uri(sinoiovOptions.Value.BaseUri);
         }
 

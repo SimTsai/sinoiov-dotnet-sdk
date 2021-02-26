@@ -12,6 +12,10 @@
         /// <summary>
         /// 参数不正确（参数为空、查询时间范围不正确、参数数量不正确）
         /// </summary>
-        InvaildParams = 1002
+        InvaildParams = 1002,
+        /// <summary>
+        /// 无结果
+        /// </summary>
+        NoResult = 1006,
     }
 }

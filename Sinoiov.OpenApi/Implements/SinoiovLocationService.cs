@@ -82,23 +82,31 @@ namespace Sinoiov.OpenApi.Implements
                         VehicleColor = vco
                     };
 
-                    decimal.TryParse(o.spd, out var speed);
+                    VLastLocationMultiV4ReplyItem value;
 
-                    var value = new VLastLocationMultiV4ReplyItem
+                    if (o.state == SinoiovOutReplyStatus.OK)
                     {
-                        VehicleInfo = key,
-                        Location = SinoiovToWGS84(o.lon, o.lat),
+                        decimal.TryParse(o.spd, out var speed);
+                        value = new VLastLocationMultiV4ReplyItem
+                        {
+                            VehicleInfo = key,
+                            Location = SinoiovToWGS84(o.lon, o.lat),
 
-                        LatestReportUtc = SinoiovToUtcDateTime(o.utc),
-                        Speed = speed,
-                        Direction = SinoiovToDirection(o.drc),
+                            LatestReportUtc = SinoiovToUtcDateTime(o.utc),
+                            Speed = speed,
+                            Direction = SinoiovToDirection(o.drc),
 
-                        Province = o.province,
-                        City = o.city,
-                        Country = o.country,
-                        Address = o.adr
-                    };
+                            Province = o.province,
+                            City = o.city,
+                            Country = o.country,
+                            Address = o.adr
+                        };
 
+                    }
+                    else
+                    {
+                        value = new VLastLocationMultiV4ReplyItem { VehicleInfo = key, NotFound = true };
+                    }
                     lastLocations.Add(key, value);
                 });
             }

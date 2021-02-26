@@ -33,15 +33,15 @@ namespace Sinoiov.OpenApi.Models.Location
         /// <summary>
         /// 车辆定位时间 UTC
         /// </summary>
-        public DateTime LatestReportUtc { get; init; }
+        public DateTime? LatestReportUtc { get; init; }
         /// <summary>
         /// 速度
         /// </summary>
-        public decimal Speed { get; init; }
+        public decimal? Speed { get; init; }
         /// <summary>
         /// 方向
         /// </summary>
-        public Direction Direction { get; init; }
+        public Direction? Direction { get; init; }
         /// <summary>
         /// 省
         /// </summary>
@@ -58,5 +58,9 @@ namespace Sinoiov.OpenApi.Models.Location
         /// 车辆地理位置名称
         /// </summary>
         public string Address { get; init; }
+        /// <summary>
+        /// 未查询到此车信息
+        /// </summary>
+        public bool NotFound { get; init; } = false;
     }
 }

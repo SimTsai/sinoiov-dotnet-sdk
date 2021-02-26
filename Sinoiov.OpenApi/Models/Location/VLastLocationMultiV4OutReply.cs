@@ -1,4 +1,6 @@
-﻿namespace Sinoiov.OpenApi.Models.Location
+﻿using Sinoiov.OpenApi.Enums;
+
+namespace Sinoiov.OpenApi.Models.Location
 {
     /// <summary>
     /// 多车最新位置查询 响应
@@ -49,5 +51,10 @@
         /// 县
         /// </summary>
         public string country { get; init; }
+
+        /// <summary>
+        /// 查询状态
+        /// </summary>
+        public virtual SinoiovOutReplyStatus state { get; init; }
     }
 }

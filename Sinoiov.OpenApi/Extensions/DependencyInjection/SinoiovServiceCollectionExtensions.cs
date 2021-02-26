@@ -29,6 +29,7 @@ namespace Sinoiov.OpenApi.Extensions.DependencyInjection
             services.AddTransient<ISinoiovHttpClient, SinoiovHttpClient>();
             services.AddTransient<ISinoiovOutRequestService, SinoiovOutRequestService>();
             services.AddTransient<ISinoiovLocationService, SinoiovLocationService>();
+            services.AddTransient<ISinoiovTokenService, SinoiovOutRequestService>();
         }
 
         /// <summary>

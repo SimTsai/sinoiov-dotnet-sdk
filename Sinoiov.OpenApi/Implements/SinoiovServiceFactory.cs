@@ -66,6 +66,10 @@ namespace Sinoiov.OpenApi.Implements
         /// 位置信息类接口
         /// </summary>
         ISinoiovLocationService SinoiovLocationService { get; }
+        /// <summary>
+        /// Token服务
+        /// </summary>
+        ISinoiovTokenService SinoiovTokenService { get; }
     }
 
     internal class SinoiovService : ISinoiovService
@@ -100,5 +104,7 @@ namespace Sinoiov.OpenApi.Implements
         private ISinoiovLocationService sinoiovLocationService;
 
         public ISinoiovLocationService SinoiovLocationService => sinoiovLocationService ??= new SinoiovLocationService(sinoiovOutRequestService);
+
+        public ISinoiovTokenService SinoiovTokenService => sinoiovOutRequestService;
     }
 }

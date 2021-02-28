@@ -48,15 +48,11 @@ namespace Sinoiov.OpenApi.Implements
             responseMessage.EnsureSuccessStatusCode();
             TReply reply;
 #if NET5_0
-            reply = await responseMessage.Content.ReadFromJsonAsync<TReply>().ConfigureAwait(false);
+            reply = await responseMessage.Content.ReadFromJsonAsync<TReply>(SinoiovOutReplyJsonSerializerOptions.Default).ConfigureAwait(false);
 #else
             var json = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
             using var ms = new MemoryStream(Encoding.UTF8.GetBytes(json), false);
-            reply = await JsonSerializer.DeserializeAsync<TReply>(ms, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            }).ConfigureAwait(false);
+            reply = await JsonSerializer.DeserializeAsync<TReply>(ms, SinoiovOutReplyJsonSerializerOptions.Default).ConfigureAwait(false);
 #endif
 
             return reply;

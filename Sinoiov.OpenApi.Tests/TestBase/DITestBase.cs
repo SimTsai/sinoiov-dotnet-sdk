@@ -19,6 +19,7 @@ namespace Sinoiov.OpenApi.Tests.TestBase
 
             var configurationBuilder = new ConfigurationBuilder();
             configurationBuilder.AddJsonFile("appsettings.json");
+            configurationBuilder.AddJsonFile("appsettings.Privacy.json", true);
 
             configurationBuilder.AddUserSecrets(this.GetType().Assembly);
             Configuration = configurationBuilder.Build();

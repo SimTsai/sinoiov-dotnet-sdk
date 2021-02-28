@@ -63,7 +63,7 @@ namespace Sinoiov.OpenApi.Implements
             VLastLocationMultiV4Reply result = new VLastLocationMultiV4Reply
             {
                 Success = outReply.Status == Enums.SinoiovOutReplyStatus.OK,
-                Message = outReply.Status.ToMessage(),
+                Message = outReply.ErrorMessage ?? outReply.Status.ToMessage(),
                 LastLocations = outReply.Status switch
                 {
                     SinoiovOutReplyStatus.OK => lastLocations ??= new Dictionary<SinoiovVehicle, VLastLocationMultiV4ReplyItem>(),

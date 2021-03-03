@@ -36,24 +36,26 @@ namespace Sinoiov.OpenApi.Implements
         /// 创建中交兴路服务
         /// </summary>
         /// <param name="sectionName">配置节名称</param>
+        /// <param name="sinoiovTokenStorageService">自定义Token存取服务</param>
         /// <returns></returns>
-        public static ISinoiovService CreateSinoiovService(string sectionName = null)
+        public static ISinoiovService CreateSinoiovService(string sectionName = null, ISinoiovTokenStorageService sinoiovTokenStorageService = null)
         {
             sectionName ??= SinoiovConfigurationSection.DefaultConfigurationSectionName;
             var configSection = System.Configuration.ConfigurationManager.GetSection(sectionName);
             var sinoiovConfigurationSection = configSection as SinoiovConfigurationSection;
             IOptions<SinoiovOptions> sinoiovOptions = sinoiovConfigurationSection.ToOptionsWrapper();
-            return CreateSinoiovService(sinoiovOptions);
+            return CreateSinoiovService(sinoiovOptions, sinoiovTokenStorageService);
         }
 
         /// <summary>
         /// 创建中交兴路服务
         /// </summary>
         /// <param name="sinoiovOptions"></param>
+        /// <param name="sinoiovTokenStorageService">自定义Token存取服务</param>
         /// <returns></returns>
-        public static ISinoiovService CreateSinoiovService(IOptions<SinoiovOptions> sinoiovOptions)
+        public static ISinoiovService CreateSinoiovService(IOptions<SinoiovOptions> sinoiovOptions, ISinoiovTokenStorageService sinoiovTokenStorageService = null)
         {
-            return new SinoiovService(sinoiovOptions);
+            return new SinoiovService(sinoiovOptions, sinoiovTokenStorageService);
         }
     }
 
@@ -83,15 +85,32 @@ namespace Sinoiov.OpenApi.Implements
         private readonly ISinoiovOutRequestService sinoiovOutRequestService;
 
         public SinoiovService(
-            IOptions<SinoiovOptions> sinoiovOptions
+            IOptions<SinoiovOptions> sinoiovOptions,
+            ISinoiovTokenStorageService customsSinoiovTokenStorageService = null
             )
         {
             this.sinoiovOptions = sinoiovOptions;
             this.httpClientFactory = new SinoiovHttpClientFactory();
             this.sinoiovHttpClient = new SinoiovHttpClient(httpClientFactory, sinoiovOptions);
             this.sinoiovSignService = new SinoiovSignService(sinoiovOptions);
-            this.sinoiovCacheProviderFactory = new SinoiovCacheProviderFactory(sinoiovOptions);
-            this.sinoiovTokenStorageService = new SinoiovTokenStorageService(sinoiovCacheProviderFactory, sinoiovOptions);
+            if (sinoiovOptions.Value.TokenStorageIn == Enums.SinoiovTokenStorageType.Custom)
+            {
+                if (customsSinoiovTokenStorageService is null)
+                {
+                    throw new ArgumentException("未指定自定义Token存储服务 ISinoiovTokenStorageService");
+                }
+                else
+                {
+                    this.sinoiovTokenStorageService = customsSinoiovTokenStorageService;
+                }
+            }
+            else
+            {
+                this.sinoiovCacheProviderFactory = new SinoiovCacheProviderFactory(sinoiovOptions);
+                this.sinoiovTokenStorageService = new SinoiovTokenStorageService(sinoiovCacheProviderFactory, sinoiovOptions);
+            }
+
+
             this.sinoiovOutRequestService = new SinoiovOutRequestService(sinoiovOptions, sinoiovHttpClient, sinoiovSignService, sinoiovTokenStorageService);
         }
 

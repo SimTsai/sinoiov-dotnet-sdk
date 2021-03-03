@@ -56,7 +56,7 @@ namespace Sinoiov.OpenApi.ConfigurationSection
                     baseUri = this.Environment switch
                     {
                         SinoiovEnvironment.Test => "https://openapi-test.sinoiov.cn",
-                        SinoiovEnvironment.Production => "https://openapi.sinoiov.cn",
+                        SinoiovEnvironment.Production => "https://zhiyunopenapi.95155.com",
                         SinoiovEnvironment.Custom => baseUri,
                         _ => throw new ArgumentOutOfRangeException("Environment not support")
                     };

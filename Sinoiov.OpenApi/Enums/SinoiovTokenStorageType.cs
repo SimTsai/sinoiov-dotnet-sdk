@@ -14,6 +14,10 @@ namespace Sinoiov.OpenApi.Enums
         /// <summary>
         /// Redis
         /// </summary>
-        [Description("Redis")] Redis
+        [Description("Redis")] Redis,
+        /// <summary>
+        /// 自定义， 需要传入ISinoiovTokenStorageService
+        /// </summary>
+        [Description("Custom")] Custom,
     }
 }

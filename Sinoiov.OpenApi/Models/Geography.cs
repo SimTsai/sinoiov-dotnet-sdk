@@ -9,6 +9,11 @@ namespace Sinoiov.OpenApi.Models
     public class Geography
     {
         /// <summary>
+        /// 中交兴路坐标偏移
+        /// </summary>
+        public int SinoiovCoordinateOffset = 600000;
+
+        /// <summary>
         /// CTOR
         /// </summary>
         /// <param name="coord"></param>
@@ -64,6 +69,7 @@ namespace Sinoiov.OpenApi.Models
                 GeographyCoordinateSystem.WGS84 => this,
                 GeographyCoordinateSystem.GCJ02 => new Geography(Coordtransform.Gcj02towgs84(this.Longitude, this.Latitude), GeographyCoordinateSystem.WGS84),
                 GeographyCoordinateSystem.BD09 => new Geography(Coordtransform.Bd09towgs84(this.Longitude, this.Latitude), GeographyCoordinateSystem.WGS84),
+                GeographyCoordinateSystem.SINOIOV => new Geography(this.Latitude / SinoiovCoordinateOffset, this.Latitude / SinoiovCoordinateOffset, GeographyCoordinateSystem.WGS84),
                 _ => throw new IndexOutOfRangeException($"{this.CoordinateSystem} not a vaild coordinateSystem")
             };
         }
@@ -79,6 +85,7 @@ namespace Sinoiov.OpenApi.Models
                 GeographyCoordinateSystem.GCJ02 => this,
                 GeographyCoordinateSystem.WGS84 => new Geography(Coordtransform.Wgs84togcj02(this.Longitude, this.Latitude), GeographyCoordinateSystem.GCJ02),
                 GeographyCoordinateSystem.BD09 => new Geography(Coordtransform.Bd09togcj02(this.Longitude, this.Latitude), GeographyCoordinateSystem.GCJ02),
+                GeographyCoordinateSystem.SINOIOV => new Geography(Coordtransform.Wgs84togcj02(this.Longitude / SinoiovCoordinateOffset, this.Latitude / SinoiovCoordinateOffset), GeographyCoordinateSystem.GCJ02),
                 _ => throw new IndexOutOfRangeException($"{this.CoordinateSystem} not a vaild coordinateSystem")
             };
         }
@@ -94,8 +101,36 @@ namespace Sinoiov.OpenApi.Models
                 GeographyCoordinateSystem.BD09 => this,
                 GeographyCoordinateSystem.GCJ02 => new Geography(Coordtransform.Gcj02tobd09(this.Longitude, this.Latitude), GeographyCoordinateSystem.BD09),
                 GeographyCoordinateSystem.WGS84 => new Geography(Coordtransform.Wgs84tobd09(this.Longitude, this.Latitude), GeographyCoordinateSystem.BD09),
+                GeographyCoordinateSystem.SINOIOV => new Geography(Coordtransform.Wgs84tobd09(this.Longitude / SinoiovCoordinateOffset, this.Latitude / SinoiovCoordinateOffset), GeographyCoordinateSystem.BD09),
                 _ => throw new IndexOutOfRangeException($"{this.CoordinateSystem} not a vaild coordinateSystem")
             };
+        }
+
+        /// <summary>
+        /// 转换为中交兴路原始坐标值（WGS84 * 600000）
+        /// </summary>
+        /// <returns></returns>
+        public Geography ToSINOIOV()
+        {
+            switch (this.CoordinateSystem)
+            {
+                case GeographyCoordinateSystem.WGS84:
+                    return new Geography(this.Latitude * SinoiovCoordinateOffset, this.Latitude * SinoiovCoordinateOffset, GeographyCoordinateSystem.SINOIOV);
+                case GeographyCoordinateSystem.GCJ02:
+                    {
+                        var wgs84 = Coordtransform.Gcj02towgs84(this.Longitude, this.Latitude);
+                        return new Geography(wgs84.lon * SinoiovCoordinateOffset, wgs84.lat * SinoiovCoordinateOffset, GeographyCoordinateSystem.SINOIOV);
+                    }
+                case GeographyCoordinateSystem.BD09:
+                    {
+                        var wgs84 = Coordtransform.Bd09towgs84(this.Longitude, this.Latitude);
+                        return new Geography(wgs84.lon * SinoiovCoordinateOffset, wgs84.lat * SinoiovCoordinateOffset, GeographyCoordinateSystem.SINOIOV);
+                    }
+                case GeographyCoordinateSystem.SINOIOV:
+                    return this;
+                default:
+                    throw new IndexOutOfRangeException($"{this.CoordinateSystem} not a vaild coordinateSystem");
+            }
         }
     }
 
@@ -115,6 +150,10 @@ namespace Sinoiov.OpenApi.Models
         /// <summary>
         /// 百度坐标
         /// </summary>
-        BD09
+        BD09,
+        /// <summary>
+        /// 中交兴路原始坐标值（WGS84 * 600000）
+        /// </summary>
+        SINOIOV,
     }
 }

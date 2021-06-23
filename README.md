@@ -60,4 +60,4 @@ service.AddSinoiov()
 |接口文档|DI|NonDI|实现版本|
 |-|-|-|-|
 |5.2. 用户认证和接口安全|-|-|3.2.2-dev.1|
-|6.1.4. 多车最新位置查询|`ISinoiovLocationService.VLastLocationMultiV4Async`|`ISinoiovService.SinoiovLocationService`|3.2.2-dev.1|
+|6.1.4. 多车最新位置查询|`ISinoiovLocationService`<br />`.VLastLocationMultiV4Async`|`ISinoiovService`<br />`.SinoiovLocationService`<br />`.VLastLocationMultiV4Async`|3.2.2-dev.1|

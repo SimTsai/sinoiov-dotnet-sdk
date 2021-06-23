@@ -76,7 +76,9 @@ namespace Sinoiov.OpenApi.Implements
                 outReply.Result.ForEach(o =>
                 {
                     Enum.TryParse<Enums.SinoiovVehicleColor>(o.vco, out var vco);
-                    var key = new SinoiovVehicle
+                    var key =
+                    request.Vehicles.Where(p => p.VehicleNO == o.vno && p.VehicleColor == vco).FirstOrDefault() ??
+                    new SinoiovVehicle
                     {
                         VehicleNO = o.vno,
                         VehicleColor = vco

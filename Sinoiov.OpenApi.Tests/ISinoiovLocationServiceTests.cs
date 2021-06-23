@@ -17,18 +17,24 @@ namespace Sinoiov.OpenApi.Tests
         [Fact]
         async public Task VLastLocationMultiV4AsyncTest()
         {
+            var vehicel = new Models.SinoiovVehicle
+            {
+                VehicleNO = "陕YH0008",
+                VehicleColor = Enums.SinoiovVehicleColor.Yellow
+            };
             var reply = await sinoiovLocationService
                 .VLastLocationMultiV4Async(new Models.Location.VLastLocationMultiV4Request
                 {
                     Vehicles = new List<Models.SinoiovVehicle> {
-                        new Models.SinoiovVehicle{
-                            VehicleNO = "陕YH0008",
-                            VehicleColor = Enums.SinoiovVehicleColor.Yellow
-                        }
+                       vehicel
                     },
                     TimeNearby = 24
                 })
                 .ConfigureAwait(false);
+            if (reply.LastLocations.TryGetValue(vehicel, out var loc))
+            {
+                var rawLocation = loc.Location.ToSINOIOV();
+            }
         }
     }
 }

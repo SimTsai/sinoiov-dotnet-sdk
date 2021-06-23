@@ -115,7 +115,7 @@ namespace Sinoiov.OpenApi.Models
             switch (this.CoordinateSystem)
             {
                 case GeographyCoordinateSystem.WGS84:
-                    return new Geography(this.Latitude * SinoiovCoordinateOffset, this.Latitude * SinoiovCoordinateOffset, GeographyCoordinateSystem.SINOIOV);
+                    return new Geography(this.Longitude * SinoiovCoordinateOffset, this.Latitude * SinoiovCoordinateOffset, GeographyCoordinateSystem.SINOIOV);
                 case GeographyCoordinateSystem.GCJ02:
                     {
                         var wgs84 = Coordtransform.Gcj02towgs84(this.Longitude, this.Latitude);
